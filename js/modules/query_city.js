@@ -139,15 +139,25 @@ var QueryCity = RichBase.extend({
 	},
 	onCityItemTap : function(that,e){
 		var tarItem = $(e.currentTarget);
-		if(tarItem.hasClass("selected")) return false;
-		that.container.find(".cityItem").removeClass("selected");
-		tarItem.addClass("selected");
-		that.fire("city.tap",{
-			name : tarItem.attr("data-name"),
-			id : tarItem.attr("data-id"),
-			pin : tarItem.attr("data-pin"),
-			abb : tarItem.attr("data-abb")
-		})
+		if(tarItem.hasClass("selected")){
+			tarItem.removeClass("selected");
+			that.fire("city.tap",{
+				type : "root",
+				name : "",
+				id : "",
+				pin : "",
+				abb : ""
+			})
+		}else{
+			that.container.find(".cityItem").removeClass("selected");
+			tarItem.addClass("selected");
+			that.fire("city.tap",{
+				name : tarItem.attr("data-name"),
+				id : tarItem.attr("data-id"),
+				pin : tarItem.attr("data-pin"),
+				abb : tarItem.attr("data-abb")
+			})
+		}
 		that.close();
 	},
 	onLocateCurrentCityTap : function(that,e){
@@ -176,7 +186,7 @@ var QueryCity = RichBase.extend({
 				id : getCityCodeByCityName(cityname),
 				pin : "",
 				abb : "",
-				type : "currentLocation"
+				type : "location"
 			});
 		}
 	},

@@ -27,6 +27,8 @@
     #allcityUl .group .cityItem.selected{ color:#2a98da}
     #allcityUl .group .cityItem.selected .select{ display:block}
     #allcityUl .state{ height:150px; line-height:150px; text-align:center; background:#fff; font-size:0.9rem}
+    #allcityUl .state .iconfont{ margin-right:2px; vertical-align:middle}
+    #allcityUl .state .t{ vertical-align:middle}
     #locateCurrentCity{ height:50px; line-height:50px; overflow:hidden; margin-top:0; padding:0 1rem; background:#fff;}
     #locateCurrentCity .t,#locateCurrentCity .city{ font-size:1rem}
     #locateCurrentCity .iconfont{ margin-right:2px; }
@@ -63,8 +65,16 @@
     });
     queryCity.on("city.tap",function(data){
         console.log(data);
+        var type = data.type;
+        if(type=="location"){ //选择定位的城市
+
+        }else if(type=="root"){ //取消所有选择 即选择全国所有城市
+
+        }else{ //正常选中某个城市
+
+        }
     });
-    queryCity.on("city.location.switch",function(data){
+    queryCity.on("city.location.switch",function(data){ //切换定位城市
         console.log(data);
     })
 </script>
