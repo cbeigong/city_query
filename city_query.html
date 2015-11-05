@@ -1,0 +1,70 @@
+<style type="text/css">
+    #cityQueryPage{ background:#dae1e4; overflow:auto; -webkit-overflow-scrolling:touch}
+    #cityQueryPage .fixHead{ position:fixed; left:0; right:0; top:0; z-index:5; height:45px; overflow:hidden; background:#2a98da; color:#fff}
+    #cityQueryPage .fixHead > .con{ display:block; height:100%; line-height:45px; padding:0 70px 0 50px; text-align:center; color:#fff;}
+    #cityQueryPage .fixHead .fixHeadTxt{ position:relative; right:-10px; font-size:1.2rem;}
+    #cityQueryPage .fixHead > .con .iconfont{ right:-10px;}
+    #cityQueryPage .fixHead .topBtn{ display:block; position:absolute; top:0; bottom:0; width:50px; line-height:45px; text-align:center;}
+    #cityQueryPage .fixHead .topBtn:active{ background:#1d7ab2}
+    #cityQueryPage .fixHead .topBtn.goBack{ left:0;}
+    #cityQueryPage .fixHead .topBtn.user{ width:35px; right:0;}
+    #cityQueryPage .fixHead .topBtn.search{ width:35px; right:35px;}
+    #cityQueryPage .fixHead .topBtn.goBack .iconfont{ left:-3px;}
+    #cityQueryPage .fixHead .topBtn.search .iconfont{ top:1px}
+    #cityQueryPage .searchBox{ position:fixed; z-index:1; top:45px; left:0; right:0; padding:8px 0.9rem; background:#dae1e4}
+    #cityQueryPage .searchBox > .con{ position:relative; width:100%;}
+    #cityQueryPage .searchBox .searchInp{ box-sizing:border-box; width:100%; height:42px; padding:10px 30px;}
+    #cityQueryPage .searchBox .iconfont.search{ position:absolute; top:13px; left:9px; font-size:1rem;}
+    #cityQueryPage .searchBox .iconfont.loading,.searchBox .iconfont.clear{ display:none; position:absolute; }
+    #cityQueryPage .searchBox .iconfont.loading{ right:35px; top:11px;}
+    #cityQueryPage .searchBox .iconfont.clear{ right:10px; top:12px; font-size:1.2rem;}
+    #allcityUl{ margin-top:0px;}
+    #allcityUl .group{ margin-bottom:8px;}
+    #allcityUl .group .letter{ height:30px; line-height:30px; font-size:1.2rem; padding-left:1rem; color:#333;}
+    #allcityUl .group .letter.none{ display:none}
+    #allcityUl .group .cityItem{ height:50px; line-height:50px; font-size:1rem; padding:0 1rem; background:#fff; border-bottom:1px solid #dbdbdb}
+    #allcityUl .group .cityItem .select{ display:none; float:right; color:#2a98da;}
+    #allcityUl .group .cityItem.selected{ color:#2a98da}
+    #allcityUl .group .cityItem.selected .select{ display:block}
+    #allcityUl .state{ height:150px; line-height:150px; text-align:center; background:#fff; font-size:0.9rem}
+    #locateCurrentCity{ height:50px; line-height:50px; overflow:hidden; margin-top:0; padding:0 1rem; background:#fff;}
+    #locateCurrentCity .t,#locateCurrentCity .city{ font-size:1rem}
+    #locateCurrentCity .iconfont{ margin-right:2px; }
+    #cityQueryPage .allCityBtn{ height:50px; line-height:50px; overflow:hidden; margin-top:10px; font-size:1rem; padding:0 1rem; background:#fff;}
+    #mainPageCon_city{ margin-top:104px;}
+</style>
+<div id="cityQueryPage" style="display:block; position:fixed;" class="page allCity allCityPage cityQueryPage ui-page">
+    <div id="" class="fixHead">
+        <div class="con"><span class="fixHeadTxt">城市列表</span></div>
+        <a class="topBtn goBack" href="javascript:window.history.go(-1)"><i style="color:#fff" class="iconfont">&#xe60c;</i></a>
+        <span class="topBtn user"><i class="iconfont">&#xe621;</i></span>
+    </div>
+    <div class="searchBox">
+        <div class="con">
+            <input class="formInp searchInp ui-radius ui-border" type="text" name="" id="searchInp" placeholder="福州 / fuzhou / fz"/>
+            <i class="iconfont search">&#xe60a;</i>
+            <i class="iconfont loading">&#xe643;</i>
+            <i id="search_clearBtn" class="iconfont clear">&#xe634;</i>
+        </div>
+    </div>
+    <div id="mainPageCon_city" class="mainPageCon_city">
+        <div id="locateCurrentCity"><i class="iconfont">&#xe603;</i><span class="t">定位城市：</span><span class="city"></span></div>
+        <div style="display:none" id="allCityBtn" class="allCityBtn"><i style="position:static;" class="iconfont">&#xe678;</i><span class="t">全国</span></div>
+        <ul id="allcityUl" class="allcityUl"></ul>
+    </div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=485641E293ABd3523de065f7c1bbfeba"></script>
+<script type="text/javascript" src="http://wx.12301.cc/modules/city_query/js/build/city.queryor.all.js"></script>
+<script type="text/javascript">
+    var QueryCity = PFT.QueryCity;
+    var queryCity = new QueryCity({
+        container : $("#cityQueryPage"),
+        listUl : $("#allcityUl")
+    });
+    queryCity.on("city.tap",function(data){
+        console.log(data);
+    });
+    queryCity.on("city.location.switch",function(data){
+        console.log(data);
+    })
+</script>

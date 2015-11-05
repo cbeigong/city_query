@@ -1,0 +1,28 @@
+<link type="text/css" rel="stylesheet" href="http://wx.12301.cc/h5/tpl/css/login.css" />
+<div style="display:none" id="loginWrap" class="loginWrap">
+    <input id="headImgHidInp" name="" type="hidden" value="<?=$headimgurl?>"/>
+    <?php
+    if(empty($headimgurl)){
+        $photoImg = "http://www.12301.cc/images/defaultThum.jpg";
+    }else{
+        $photoImg = $headimgurl;
+    }
+    ?>
+    <div class="setBg">
+        <a class="goBackBtn" href="javascript:history.go(-1)"><i class="iconfont">&#xe60c;</i></a>
+        <div class="userPhoto">
+            <img class="userImg" src="<?=$photoImg?>" />
+        </div>
+        <div class="loginBox">
+            <div class="inpBox ui-radius">
+                <div><i class="iconfont loginIcon">&#xe682;</i><input id="login-userInp" class="loginInp setBorder login-userInp" type="text" placeholder="6位帐号或11位手机号"/></div>
+                <div><i class="iconfont loginIcon">&#xe62d;</i><input id="login-pwdInp" class="loginInp login-pwdInp" type="password" placeholder="请输入密码"/></div>
+            </div>
+            <a id="loginBtn" class="loginBtn longinBtn ui-radius" href="javascript:void(0)">登录</a>
+        </div>
+        <a class="forgetBtn" href="wx.12301.cc/h5/resetpassword.html">忘记密码?</a>
+        <a class="regBtn" href="wx.12301.cc/h5/register.html">注册</a>
+    </div>
+</div>
+<script type="text/javascript" src="http://www.12301.cc/js/md5.js"></script>
+<script type="text/javascript" src="http://wx.12301.cc/h5/tpl/js/login/login.js"></script>

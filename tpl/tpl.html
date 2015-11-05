@@ -1,0 +1,21 @@
+<script id="notice_list_tpl" type="text/template">
+    <li id="noticeItem_<%=id%>" class="list notice" data-id="<%=id%>">
+        <a style="display:block" href="#detail?id=<%=id%>">
+            <p class="title"><%=title%></p>
+            <div class="conDetail"><%=details%></div>
+            <div class="timeBox">
+                <span class="timeDetail"><%=create_time%></span>
+                <span class="discussBox">
+                    <i class="discussImg"></i>
+                    <span class="remarkCountBox remarkCountBox_<%=id%>" id="remarkCountBox_<%=id%>"><%=remarks%></span>
+                </span>
+            </div>
+        </a>
+    </li>
+</script>
+<script id="comment_list_tpl" type="text/template">
+    <li class="list comment">
+        <p class="comment"><%=dname%>：</p>
+        <p class="discussConDetail"><%=comment%></p>
+    </li>
+</script>
